@@ -2,7 +2,6 @@ cabal-version:      3.0
 name:               dnb
 version:            0.1.0.0
 synopsis:           Drum N Bass
--- description:
 homepage:           https://github.com/dopamane/dnb
 license:            MIT
 license-file:       LICENSE
@@ -22,25 +21,27 @@ library
   default-language: Haskell2010
   ghc-options:      -Wall -O2
   hs-source-dirs:   lib
-  exposed-modules:  Sound.Drum
+  exposed-modules:  Sound.DNB
   build-depends:
     base < 5,
     binary,
     rap
 
 executable dnb
-    ghc-options:      -Wall -O2 -threaded
-    main-is:          Main.hs
-    -- other-modules:
-    -- other-extensions:
-    build-depends:
-        base ^>=4.20.2.0,
-        dnb
+  default-language: Haskell2010
+  ghc-options:      -Wall -O2 -threaded
+  hs-source-dirs:   exe
+  main-is:          Main.hs
+  other-modules:    Paths_dnb
+  autogen-modules:  Paths_dnb
+  build-depends:
+    base < 5,
+    binary,
+    bytestring,
+    dnb,
+    rap
 
-    hs-source-dirs:   exe
-    default-language: Haskell2010
-
-test-suite dnb-test
+test-suite test
     ghc-options:      -Wall -O2 -threaded
     default-language: Haskell2010
     -- other-modules:
