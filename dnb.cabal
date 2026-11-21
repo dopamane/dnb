@@ -23,7 +23,10 @@ library
   ghc-options:      -Wall -O2
   hs-source-dirs:   lib
   exposed-modules:  Sound.Drum
-  build-depends:    base < 5
+  build-depends:
+    base < 5,
+    binary,
+    rap
 
 executable dnb
     ghc-options:      -Wall -O2 -threaded
