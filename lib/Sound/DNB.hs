@@ -20,10 +20,10 @@ kickwav = [Stanza "RIFF" "WAVE"
 
 kick :: [Double]
 kick = take 22050 $
-  zipWith (*) (iterate (* 0.999995) 0.95) $ map (sin . (* (2 * pi))) $ scanl' acc 0 fs
+  zipWith (*) (iterate (* 0.999595) 1) $ sin . (* (2 * pi)) <$> scanl' acc 0 fs
   where
     acc phi fn = wrap $ phi + fn / 44100
-    fs = take 1300 (iterate (subtract 0.113) 200) ++ repeat 50
+    fs = take 2000 (iterate (subtract 0.07469) 200) ++ repeat 50
 
 wrap :: Double -> Double
 wrap d
